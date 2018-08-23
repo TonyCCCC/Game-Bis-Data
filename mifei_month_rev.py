@@ -71,19 +71,8 @@ class MifeiLogin:
 
 
 if __name__ == '__main__':
-    cp_list = {
-        "Ruigame": "Rygm2015",
-        "Coconut": "Indiapk2015",
-        "jingyin": "3Car123456",
-        "CDyouxifang": "Aa000000",
-        "shenyou2": "Aa000000",
-        "Szshenyou": "Aa000000",
-        "UC_CP2017": "Aa000000",
-    }
-    channel_list = {
-        "UC_2015": "Ucgame2015",
-        "uczhuanyong": "Aa000000"
-    }
+    cp_list = eval(open('cp_list.txt').read())
+    channel_list = eval(open('channel_list.txt').read())
     CP = MifeiLogin('cp')
     for i in cp_list:
         with open('mifei.csv', 'a') as f:
