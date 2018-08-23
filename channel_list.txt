@@ -1,4 +1,0 @@
-{
-        "UC_2015": "Ucgame2015",
-        "uczhuanyong": "Aa000000"
-}

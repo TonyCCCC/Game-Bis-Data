@@ -71,8 +71,8 @@ class MifeiLogin:
 
 
 if __name__ == '__main__':
-    cp_list = eval(open('cp_list.txt').read())
-    channel_list = eval(open('channel_list.txt').read())
+    cp_list = eval(open(r'C:\Users\Administrator\Desktop\游戏向\游戏商业化\cp_list.txt').read())
+    channel_list = eval(open(r'C:\Users\Administrator\Desktop\游戏向\游戏商业化\channel_list.txt').read())
     CP = MifeiLogin('cp')
     for i in cp_list:
         with open('mifei.csv', 'a') as f:
