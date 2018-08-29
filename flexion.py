@@ -1,7 +1,10 @@
 import requests
-
+import os
 
 class FlexionLogin:
+    def __init__(self ,start_date, end_date):
+        self.start_date = start_date
+        self.end_date = end_date
 
     def get_auth(self):
         headers = {
@@ -13,7 +16,7 @@ class FlexionLogin:
         cookies = requests.utils.dict_from_cookiejar(c)
         return cookies
 
-    def login(self, start_date, end_date, filename):
+    def login(self):
         cookies = self.get_auth()
         print('Cookies: %s' % cookies)
         c = requests.utils.cookiejar_from_dict(cookies)
@@ -31,8 +34,8 @@ class FlexionLogin:
             "format": "csv",
             "filtering": "product",
             "toCurrency": "USD",
-            "from":"2018-08-13",
-            "to": "2018-08-19",
+            "from": self.start_date,
+            "to": self.end_date,
             "group_report_day": "true",
             "group_affiliate": "true",
             "group_publisher": "true",
@@ -40,10 +43,11 @@ class FlexionLogin:
             "group_inapp_item": "true"
         }
         file = session.post('https://reports.flexionmobile.com/msp.report.frontend/flexionsdkreport/download', data=date, cookies=c)
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open('flexion.csv', 'w', encoding='utf-8') as f:
             f.write(file.text)
+        os.startfile(r'%s\flexion.csv' %os.getcwd())
 
 
 if __name__ == '__main__':
     L = FlexionLogin()
-    L.login('2018-08-13', '2018-08-19', 'flexion.csv')
+    L.login()
